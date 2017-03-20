@@ -1,0 +1,10 @@
+[
+  {
+    "type": "Category",
+    "name": "你好!"
+  },
+  {
+    "type": "Recipe",
+    "name": "VUE"
+  }
+]
