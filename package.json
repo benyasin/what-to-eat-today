@@ -35,7 +35,9 @@
     "express": "^4.15.2",
     "framework7": "^1.5.3",
     "framework7-vue": "^0.8.4",
+    "lodash": "^4.17.4",
     "mongoose": "^4.9.0",
+    "node-mind": "^0.2.1",
     "vue": "^2.1.10"
   },
   "devDependencies": {

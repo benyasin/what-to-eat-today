@@ -17,6 +17,20 @@ router.get('/api/fetchAllByGrade/:grade', (req, res) => {
 })
 
 
+router.get('/api/fetchAllByPid/:pid', (req, res) => {
+    let pid = req.params.pid;
+    db.Category.find({parentId: pid * 1}, (err, doc) => {
+        if (err) {
+            console.log(err)
+            res.status(500).end()
+        } else if (doc) {
+            res.send(doc)
+            res.status(200).end()
+        }
+    })
+})
+
+
 router.get('/api/fetchAllByNames/:names', (req, res) => {
     let names = req.params.names;
     let nameArray = names.split(',');
