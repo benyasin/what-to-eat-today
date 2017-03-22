@@ -1,5 +1,14 @@
 export default {
     materials: [{
+        id: 51761,
+        name: '烘焙'
+    }, {
+        id: 20135,
+        name: '甜品'
+    }, {
+        id: 20136,
+        name: '饮品'
+    }, {
         id: 5399,
         name: '猪'
     }, {
@@ -18,21 +27,12 @@ export default {
         id: 605,
         name: '牛蛙'
     }, {
-        id: 719,
-        name: '兔肉'
-    }, {
-        id: 20132,
-        name: '饭'
-    }, {
         id: 20133,
         name: '面'
     }, {
         id: 20148,
         name: '饺子'
-    }, {
-        id: 20150,
-        name: '混沌'
-    }, {
+    },{
         id: 957,
         name: '鱼'
     }, {
@@ -44,37 +44,5 @@ export default {
     }, {
         id: 1183,
         name: '螃蟹'
-    }],
-
-    taste: [{
-        id: 51359,
-        name: '辣'
-    }, {
-        id: 51922,
-        name: '咖喱'
-    }, {
-        id: 40066,
-        name: '糖醋'
-    }, {
-        id: 52413,
-        name: '蒜香'
-    }, {
-        id: 51449,
-        name: '酸甜'
-    }, {
-        id: 52407,
-        name: '奶香'
-    }, {
-        id: 52401,
-        name: '孜然'
-    }, {
-        id: 51875,
-        name: '鱼香'
-    }, {
-        id: 52399,
-        name: '五香'
-    }, {
-        id: 51460,
-        name: '清淡'
     }]
 }

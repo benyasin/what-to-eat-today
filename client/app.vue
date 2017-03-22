@@ -34,10 +34,6 @@
                             <f7-grid>
                                 <f7-col class="prediction-note" width="30">
                                     猜你多喜欢:
-
-
-
-
                                 </f7-col>
                                 <f7-col width="70">
                                     <star-rating inactive-color="#000"
@@ -118,7 +114,6 @@
                             brain.learn();
                             self.description = '如果我说错了,请告诉我,我会越来越懂你';
                             self.predictRating = brain.predict(res);
-                            console.log(self.predictRating)
                         }
                     }).catch(function (err) {
                     console.log(err)
