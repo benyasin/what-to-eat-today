@@ -39,7 +39,7 @@
                         <f7-block class="prediction" v-if="numRated > 10">
                             <f7-grid>
                                 <f7-col class="prediction-note" width="30">
-                                    猜你有多喜欢:
+                                    猜你多喜欢:
                                 </f7-col>
                                 <f7-col width="70">
                                     <star-rating inactive-color="#000"
@@ -74,6 +74,10 @@
 
     .prediction {
         margin: 0 0 35px 0;
+    }
+
+    .content-block{
+        margin: 15px 0;
     }
 
     .prediction-note {
@@ -133,7 +137,7 @@
 
                 setTimeout(function () {
                     self.fetchRandomRecipe()
-                }, 500)
+                }, 10)
             },
             resetRating() {
                 this.resetableRating = 0;

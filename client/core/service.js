@@ -37,7 +37,7 @@ function getAllCategories() {
             if (catsArray.length === constants.materials.length) {
                 window.localStorage.setItem('wtet_categories', JSON.stringify(catsArray));
             }
-        }, 1000)
+        }, 4000)
     }
 
 }

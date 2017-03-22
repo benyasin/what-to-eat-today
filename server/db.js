@@ -31,8 +31,8 @@ const initialize = function () {
     })
 }
 
-mongoose.connect('mongodb://127.0.0.1/food')
-mongoose.set('debug', true)
+mongoose.connect('mongodb://benyasin:rgwapkk@127.0.0.1/food')
+//mongoose.set('debug', true)
 
 const db = mongoose.connection
 
