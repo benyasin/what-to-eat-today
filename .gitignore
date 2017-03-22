@@ -38,9 +38,9 @@ jspm_packages
 
 .DS_Store
 node_modules/
-dist/
 npm-debug.log
 .idea/jsLibraryMappings.xml
 .idea/mongoSettings.xml
 .idea/watcherTasks.xml
 .idea/workspace.xml
+.idea/
