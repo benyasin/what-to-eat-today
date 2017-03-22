@@ -17,9 +17,8 @@ app.use(cookieParser())
 app.use('/dist', express.static(resolve('../dist')))
 app.use(api)
 
-app.get('*', function (req, res) {
-    const html = fs.readFileSync(resolve('../index.html'), 'utf-8')
-    res.send(html)
+app.get('/', function (req, res) {
+    res.sendFile(resolve('../dist/index.html'));
 })
 
 app.listen(app.get('port'), function () {

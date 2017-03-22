@@ -4,13 +4,7 @@
 
         <!-- Main Views -->
         <f7-views>
-            <f7-view id="main-view" navbar-through :dynamic-navbar="true" main>
-                <!-- iOS Theme Navbar -->
-                <f7-navbar v-if="$theme.ios">
-
-                    <f7-nav-center sliding>今天吃什么</f7-nav-center>
-
-                </f7-navbar>
+            <f7-view id="main-view" main>
                 <!-- Pages -->
                 <f7-pages>
                     <f7-page>
@@ -120,7 +114,6 @@
                                 brain.learn();
                                 self.description = '如果我说错了,请告诉我,我会越来越懂你';
                                 self.predictRating = brain.predict(res);
-                                console.log(self.predictRating)
                             }
 
                         });
@@ -137,7 +130,7 @@
 
                 setTimeout(function () {
                     self.fetchRandomRecipe()
-                }, 10)
+                }, 0)
             },
             resetRating() {
                 this.resetableRating = 0;
