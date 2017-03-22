@@ -3,13 +3,11 @@ import constants from './constants'
 import _ from 'lodash'
 
 
-const mind = Mind({learningRate: 0.3,activator:'sigmoid'});
+const mind = Mind({learningRate: 0.3, activator: 'sigmoid'});
 
 const trainingData = [];
-let catsArray = window.localStorage.getItem('wtet_categories');
-if (catsArray !== null) {
-    catsArray = JSON.parse(catsArray)
-}
+let catsArray = _getTargetCollection();
+
 
 function learn() {
     mind.learn(trainingData);
@@ -18,6 +16,9 @@ function learn() {
 function predict(recipe) {
 
     let input = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    if (catsArray.length === 0)
+        catsArray = _getTargetCollection();
+
     recipe.categories.forEach(function (cat) {
         let target = {};
         catsArray.forEach(function (obj) {
@@ -38,6 +39,9 @@ function predict(recipe) {
 function rate(recipe, rating) {
 
     let input = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    if (catsArray.length === 0)
+        catsArray = _getTargetCollection();
+
     recipe.categories.forEach(function (cat) {
         let target = {};
         catsArray.forEach(function (obj) {
@@ -49,9 +53,13 @@ function rate(recipe, rating) {
         let index = _.findIndex(constants.materials, target);
         if (index > -1) input[index] = 1;
     })
-    let data = { input: input, output: [ rating / 5 ] };
-    console.log(data)
+    let data = {input: input, output: [rating / 5]};
     trainingData.push(data);
+}
+
+function _getTargetCollection() {
+    catsArray = window.localStorage.getItem('wtet_categories');
+    return catsArray !== null ? JSON.parse(catsArray) : [];
 }
 
 const brain = {

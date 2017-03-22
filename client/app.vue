@@ -30,10 +30,13 @@
                             </f7-grid>
                         </f7-block>
 
-                        <f7-block class="prediction" v-if="numRated > 10">
+                        <f7-block class="prediction" v-if="numRated >= 10">
                             <f7-grid>
                                 <f7-col class="prediction-note" width="30">
                                     猜你多喜欢:
+
+
+
                                 </f7-col>
                                 <f7-col width="70">
                                     <star-rating inactive-color="#000"
@@ -70,7 +73,7 @@
         margin: 0 0 35px 0;
     }
 
-    .content-block{
+    .content-block {
         margin: 15px 0;
     }
 
@@ -87,7 +90,6 @@
     import Service from './core/service'
     import brain from './core/brain'
 
-
     export default{
         data() {
             return {
@@ -95,28 +97,31 @@
                 description: '',
                 numRated: 0,
                 resetableRating: 0,
-                predictRating: 0
+                predictRating: 0,
+                description: ''
             }
         },
-        created: function () {
-            this.description = '先看看你的口味,10次之后,我会作出预测';
+        mounted: function () {
+            this.description = '别着急，先让我了解你一下（10）';
             this.fetchRandomRecipe()
         },
         methods: {
             fetchRandomRecipe: function () {
                 let self = this;
                 Service.generateARecipe()
-                        .then(function (res) {
-                            self.recipe = res;
-                            self.resetRating();
+                    .then(function (res) {
+                        self.recipe = res;
+                        self.resetRating();
 
-                            if (self.numRated > 10) {
-                                brain.learn();
-                                self.description = '如果我说错了,请告诉我,我会越来越懂你';
-                                self.predictRating = brain.predict(res);
-                            }
-
-                        });
+                        if (self.numRated >= 10) {
+                            brain.learn();
+                            self.description = '如果我说错了,请告诉我,我会越来越懂你';
+                            self.predictRating = brain.predict(res);
+                        }
+                    }).catch(function (err) {
+                    console.log(err)
+                    self.fetchRandomRecipe();
+                })
             },
             skip: function () {
                 this.fetchRandomRecipe();
@@ -125,6 +130,9 @@
                 let self = this;
                 self.resetableRating = rating;
                 self.numRated++;
+                if(self.numRated <= 10){
+                    self.description = '别着急，先让我了解你一下（' + (10 - self.numRated) + '）';
+                }
                 brain.rate(self.recipe, rating);
 
 
