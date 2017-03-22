@@ -1,10 +1,6 @@
 import Mind from 'node-mind';
-import constants from './constants'
-import _ from 'lodash'
-
 
 const mind = Mind({learningRate: 0.3, activator: 'sigmoid'});
-
 const trainingData = [];
 let catsArray = _getTargetCollection();
 
@@ -20,15 +16,10 @@ function predict(recipe) {
         catsArray = _getTargetCollection();
 
     recipe.categories.forEach(function (cat) {
-        let target = {};
-        catsArray.forEach(function (obj) {
-            let index = _.findIndex(obj.family, cat);
-            if (index > -1) {
-                target = obj.parent;
-            }
-        })
-        let index = _.findIndex(constants.materials, target);
-        if (index > -1) input[index] = 1;
+        for (let i = 0; i < catsArray.length; i++) {
+            let index = catsArray[i].indexOf(cat.id);
+            if (index > -1) input[i] = 1;
+        }
     })
 
     let prediction = mind.predict(input) * 5;
@@ -43,15 +34,10 @@ function rate(recipe, rating) {
         catsArray = _getTargetCollection();
 
     recipe.categories.forEach(function (cat) {
-        let target = {};
-        catsArray.forEach(function (obj) {
-            let index = _.findIndex(obj.family, cat);
-            if (index > -1) {
-                target = obj.parent;
-            }
-        })
-        let index = _.findIndex(constants.materials, target);
-        if (index > -1) input[index] = 1;
+        for (let i = 0; i < catsArray.length; i++) {
+            let index = catsArray[i].indexOf(cat.id);
+            if (index > -1) input[i] = 1;
+        }
     })
     let data = {input: input, output: [rating / 5]};
     trainingData.push(data);

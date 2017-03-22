@@ -37,6 +37,7 @@
 
 
 
+
                                 </f7-col>
                                 <f7-col width="70">
                                     <star-rating inactive-color="#000"
@@ -117,6 +118,7 @@
                             brain.learn();
                             self.description = '如果我说错了,请告诉我,我会越来越懂你';
                             self.predictRating = brain.predict(res);
+                            console.log(self.predictRating)
                         }
                     }).catch(function (err) {
                     console.log(err)
@@ -127,18 +129,13 @@
                 this.fetchRandomRecipe();
             },
             setRating: function (rating) {
-                let self = this;
-                self.resetableRating = rating;
-                self.numRated++;
-                if(self.numRated <= 10){
-                    self.description = '别着急，先让我了解你一下（' + (10 - self.numRated) + '）';
+                this.resetableRating = rating;
+                this.numRated++;
+                if (this.numRated <= 10) {
+                    this.description = '别着急，先让我了解你一下（' + (10 - this.numRated) + '）';
                 }
-                brain.rate(self.recipe, rating);
-
-
-                setTimeout(function () {
-                    self.fetchRandomRecipe()
-                }, 0)
+                brain.rate(this.recipe, rating);
+                this.fetchRandomRecipe()
             },
             resetRating() {
                 this.resetableRating = 0;
