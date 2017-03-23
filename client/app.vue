@@ -94,8 +94,7 @@
                 description: '',
                 numRated: 0,
                 resetableRating: 0,
-                predictRating: 0,
-                description: ''
+                predictRating: 0
             }
         },
         mounted: function () {

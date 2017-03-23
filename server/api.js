@@ -47,14 +47,13 @@ router.get('/api/fetchOneById/:id', (req, res) => {
 
 router.get('/api/fetchRandomRecipe/:cid', (req, res) => {
     let cid = req.params.cid;
-    db.Recipe.count({categories: {$elemMatch: {id: cid * 1}}, score: {$gte: 7.0}}, (err, total) => {
+    db.Recipe.count({categories: {$elemMatch: {id: cid * 1}}, score: {$gte: 7}}, (err, total) => {
         if (err) {
             console.log(err)
         } else if (total) {
             if (total > 0) {
                 let rIndex = Math.floor(Math.random() * total);
-                console.log(total,rIndex)
-                db.Recipe.find({categories: {$elemMatch: {id: cid * 1}}, score: {$gte: 7.0}}).skip(rIndex).limit(1).exec(function (err, doc) {
+                db.Recipe.find({categories: {$elemMatch: {id: cid * 1}}, score: {$gte: 7}}).skip(rIndex).limit(1).exec(function (err, doc) {
                     if (err) {
                         console.log(err)
                         res.status(500).end()

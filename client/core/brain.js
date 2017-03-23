@@ -1,6 +1,6 @@
 import Mind from 'node-mind';
 
-const mind = Mind({learningRate: 0.3, activator: 'sigmoid'});
+const mind = Mind({learningRate: 0.7, activator: 'sigmoid', iterations: 5000});
 const trainingData = [];
 let catsArray = _getTargetCollection();
 
