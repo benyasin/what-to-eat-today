@@ -10,7 +10,7 @@ calculate an output.
 In back propagation, it measure the margin of error of the output and adjust the weights accordingly to decrease the error.
 
 ### snapshot
-![training](./snapshot1.jpeg)
-![predict](./snapshot2.jpeg)
+![training](./snapshot1.jpg)
+![predict](./snapshot2.jpg)
 ### license
 MIT
